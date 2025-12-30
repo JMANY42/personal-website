@@ -9,6 +9,9 @@ export default defineConfig({
     tailwindcss(),
   ],
   server: {
-    port: 3005, // Change this to your desired port
+    port: 3005,
+    allowedHosts: [
+    	'davidjonathanlewis.com',
+    ]
   },
 })
