@@ -1,0 +1,68 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main        # Production
+      - develop     # Staging
+      - feature/*   # Development previews
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref == 'refs/heads/main' && 'production' || github.ref == 'refs/heads/develop' && 'staging' || 'development' }}
+
+    steps:
+      # 1️⃣ Checkout the repo
+      - uses: actions/checkout@v4
+
+      # 2️⃣ Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.19.0'
+
+      # 3️⃣ Install dependencies & build React app
+      - name: Install & Build React App
+        run: |
+          npm install
+          npm run build
+
+      # 4️⃣ Determine server based on branch
+      - name: Determine server
+        id: server
+        run: |
+          echo "host=${{ secrets.SERVER_HOST }}" >> $GITHUB_ENV
+
+          if [ "${GITHUB_REF}" == "refs/heads/main" ]; then
+            echo "env=production" >> $GITHUB_ENV
+            echo "target=/var/www/personal-website-prod" >> $GITHUB_ENV
+          elif [ "${GITHUB_REF}" == "refs/heads/develop" ]; then
+            echo "env=staging" >> $GITHUB_ENV
+            echo "target=/var/www/personal-website-staging" >> $GITHUB_ENV
+          else
+            echo "env=development" >> $GITHUB_ENV
+            echo "target=/var/www/personal-website-dev" >> $GITHUB_ENV
+
+      - name: Setup SSH key
+        run: |
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H $host >> ~/.ssh/known_hosts
+
+          
+      # 5️⃣ Deploy the React build to the server
+      - name: Deploy React App to Server
+        run: |
+          echo "Deploying React app to $env server ($host)..."
+
+          # Make sure the target directory exists
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@$host "mkdir -p ($target)"
+
+          # Copy build folder contents
+          
+          scp -r ./dist/* ${{ secrets.SERVER_USER }}@$host:($target)
+
+          # Optional: restart server if using nginx or serve
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@$host "mkdir -p /var/www/personal-website"
+          sudo nginx -t && sudo systemctl reload nginx
