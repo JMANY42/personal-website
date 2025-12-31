@@ -25,6 +25,7 @@ jobs:
       # 3️⃣ Install dependencies & build React app
       - name: Install & Build React App
         run: |
+          cd frontend
           npm install
           npm run build
 
