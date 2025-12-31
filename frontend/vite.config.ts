@@ -1,6 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -9,9 +12,12 @@ export default defineConfig({
     tailwindcss(),
   ],
   server: {
-    port: 3005,
+    port: Number(process.env.VITE_SERVER_PORT) || 3000,
     allowedHosts: [
-    	'davidjonathanlewis.com',
+    	process.env.VITE_SERVER_HOST || 'dev.davidjonathanlewis.com',
     ]
+  },
+  preview: {
+    port: Number(process.env.VITE_SERVER_PORT) || 3000,
   },
 })
