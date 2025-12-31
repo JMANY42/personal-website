@@ -64,16 +64,16 @@ jobs:
           echo "Deploying React app to $env server ($host)..."
 
           # Make sure target directory exists
-          ssh -o ProxyCommand="cloudflared access ssh --hostname %h" \
+          ssh -o ProxyCommand="cloudflared access ssh --hostname %h --token ${{ secrets.CLOUDFLARE_TOKEN }}" \
               -o StrictHostKeyChecking=no \
               ${{ secrets.SERVER_USER }}@$ssh_uri "mkdir -p $target"
 
           # Copy build folder contents
-          scp -o ProxyCommand="cloudflared access ssh --hostname %h" \
+          scp -o ProxyCommand="cloudflared access ssh --hostname %h --token ${{ secrets.CLOUDFLARE_TOKEN }}" \
               -o StrictHostKeyChecking=no \
               -r frontend/dist/* ${{ secrets.SERVER_USER }}@$ssh_uri:$target
 
           # Optional: restart nginx (run on the server via SSH)
-          ssh -o ProxyCommand="cloudflared access ssh --hostname %h" \
+          ssh -o ProxyCommand="cloudflared access ssh --hostname %h --token ${{ secrets.CLOUDFLARE_TOKEN }}" \
               -o StrictHostKeyChecking=no \
               ${{ secrets.SERVER_USER }}@$ssh_uri "sudo nginx -t && sudo systemctl reload nginx"
