@@ -31,19 +31,19 @@ jobs:
 
       # 4️⃣ Determine server based on branch
       - name: Determine server
-        id: server
         run: |
           echo "host=${{ secrets.SERVER_HOST }}" >> $GITHUB_ENV
 
-          if [ "${GITHUB_REF}" == "refs/heads/main" ]; then
+          if [ "$GITHUB_REF" = "refs/heads/main" ]; then
             echo "env=production" >> $GITHUB_ENV
             echo "target=/var/www/personal-website-prod" >> $GITHUB_ENV
-          elif [ "${GITHUB_REF}" == "refs/heads/develop" ]; then
+          elif [ "$GITHUB_REF" = "refs/heads/develop" ]; then
             echo "env=staging" >> $GITHUB_ENV
             echo "target=/var/www/personal-website-staging" >> $GITHUB_ENV
           else
             echo "env=development" >> $GITHUB_ENV
             echo "target=/var/www/personal-website-dev" >> $GITHUB_ENV
+          fi
 
       - name: Setup SSH key
         run: |
@@ -57,13 +57,11 @@ jobs:
         run: |
           echo "Deploying React app to $env server ($host)..."
 
-          # Make sure the target directory exists
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@$host "mkdir -p ($target)"
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@$host \
+            "mkdir -p $target"
 
-          # Copy build folder contents
-          
-          scp -r ./dist/* ${{ secrets.SERVER_USER }}@$host:($target)
+          scp -r frontend/dist/* \
+            ${{ secrets.SERVER_USER }}@$host:$target
 
-          # Optional: restart server if using nginx or serve
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@$host "mkdir -p /var/www/personal-website"
-          sudo nginx -t && sudo systemctl reload nginx
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@$host \
+            "sudo nginx -t && sudo systemctl reload nginx"
