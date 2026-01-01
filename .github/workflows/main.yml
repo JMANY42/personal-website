@@ -51,8 +51,8 @@ jobs:
           mkdir -p ~/.ssh
           printf "%s\n" "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H $host >> ~/.ssh/known_hosts
-          ssh -i ~/.ssh/id_ed25519 ${{ secrets.SERVER_USER }}@$ssh_uri
+          ssh-keyscan -H ${{ secrets.SSH_SERVER_URI }} >> ~/.ssh/known_hosts
+          ssh -i ~/.ssh/id_ed25519 ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_URI }}
 
       - name: Install cloudflared
         run: |
@@ -65,22 +65,22 @@ jobs:
           echo "Deploying React app to $env server ($host)..."
 
           # Make sure target directory exists
-          ssh -o ProxyCommand="cloudflared access ssh --hostname $ssh_uri \
+          ssh -o ProxyCommand="cloudflared access ssh --hostname ${{ secrets.SSH_SERVER_URI }} \
               --token-id ${{ secrets.CLOUDFLARE_CLIENT_ID }} \
               --token-secret ${{ secrets.CLOUDFLARE_CLIENT_SECRET }}" \
               -o StrictHostKeyChecking=no \
-              ${{ secrets.SERVER_USER }}@$ssh_uri "mkdir -p $target"
+              ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_URI }} "mkdir -p $target"
 
           # Copy build folder contents
-          scp -o ProxyCommand="cloudflared access ssh --hostname $ssh_uri \
+          scp -o ProxyCommand="cloudflared access ssh --hostname ${{ secrets.SSH_SERVER_URI }} \
               --token-id ${{ secrets.CLOUDFLARE_CLIENT_ID }} \
               --token-secret ${{ secrets.CLOUDFLARE_CLIENT_SECRET }}" \
               -o StrictHostKeyChecking=no \
-              -r frontend/dist/* ${{ secrets.SERVER_USER }}@$ssh_uri:$target
+              -r frontend/dist/* ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_URI }}:$target
 
           # Optional: restart nginx (run on the server via SSH)
-          ssh -o ProxyCommand="cloudflared access ssh --hostname $ssh_uri \
+          ssh -o ProxyCommand="cloudflared access ssh --hostname ${{ secrets.SSH_SERVER_URI }} \
               --token-id ${{ secrets.CLOUDFLARE_CLIENT_ID }} \
               --token-secret ${{ secrets.CLOUDFLARE_CLIENT_SECRET }}" \
               -o StrictHostKeyChecking=no \
-              ${{ secrets.SERVER_USER }}@$ssh_uri "sudo nginx -t && sudo systemctl reload nginx"
+              ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_URI }} "sudo nginx -t && sudo systemctl reload nginx"
