@@ -54,7 +54,7 @@ jobs:
 
       - name: Setup SSH key
         run: |
-          warp-cli target list --accept-tos
+          warp-cli --accept-tos target list
           mkdir -p ~/.ssh
           printf "%s\n" "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
