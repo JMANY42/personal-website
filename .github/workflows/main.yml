@@ -32,8 +32,7 @@ jobs:
       # 4️⃣ Determine server based on branch
       - name: Determine server
         run: |
-          echo "host=${{ secrets.SERVER_HOST }}" >> $GITHUB_ENV
-          echo "ssh_uri=${{ secrets.SSH_SERVER_URI }}" >> $GITHUB_ENV
+          echo "ssh_uri=${{ secrets.SSH_SERVER_IP }}" >> $GITHUB_ENV
 
           if [ "$GITHUB_REF" = "refs/heads/main" ]; then
             echo "env=production" >> $GITHUB_ENV
@@ -55,21 +54,21 @@ jobs:
       - name: Setup SSH Key
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan -H ${{ secrets.SSH_SERVER_URI }} >> ~/.ssh/known_hosts
+          ssh-keyscan -H ${{ secrets.SSH_SERVER_IP }} >> ~/.ssh/known_hosts
 
       # 5️⃣ Deploy the React build to the server
       - name: Deploy React App to Server
         run: |
-          echo "Deploying React app to $env server ($host)..."
+          echo "Deploying React app to $env server"
 
           # Make sure target directory exists
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_URI }} "sudo mkdir -p $target"
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }} "sudo mkdir -p $target"
 
           # Copy build folder contents
-          scp -r -v -O ~/work/personal-website/personal-website/frontend/dist ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_URI }}:~
+          scp -r -O ~/work/personal-website/personal-website/frontend/dist ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }}:~
 
           # Copy into correct directory
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_URI }} "sudo cp -r dist/* $target && rm -rf dist"
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }} "sudo cp -r dist/* $target && rm -rf dist"
 
           # Optional: restart nginx (run on the server via SSH)
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_URI }} "sudo nginx -t && sudo systemctl reload nginx"
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }} "sudo nginx -t && sudo systemctl reload nginx"
