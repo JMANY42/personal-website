@@ -5,7 +5,8 @@ function App() {
   return (
     <>
       <div>
-        <h1>Update from workflow</h1>
+        <h1>Happy Birthday Mom!</h1>
+        <p>I love you!</p>
       </div>
     </>
   )
