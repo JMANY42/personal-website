@@ -60,7 +60,7 @@ jobs:
           # ssh-keyscan -H ${{ secrets.SSH_SERVER_URI }} >> ~/.ssh/known_hosts
           ssh-keygen -y -f ~/.ssh/id_ed25519 > /dev/null
 
-          ssh {{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_URI }} ""
+          ssh {{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_URI }} "touch thisworked.asdf"
 
       # 5️⃣ Deploy the React build to the server
       - name: Deploy React App to Server
