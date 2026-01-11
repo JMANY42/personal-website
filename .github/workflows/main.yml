@@ -52,14 +52,6 @@ jobs:
           auth_client_id: ${{ secrets.CLOUDFLARE_AUTH_CLIENT_ID }}
           auth_client_secret: ${{ secrets.CLOUDFLARE_AUTH_CLIENT_SECRET }}
 
-      - name: Setup SSH key
-        run: |
-          warp-cli --accept-tos target list
-          mkdir -p ~/.ssh
-          printf "%s\n" "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H ${{ secrets.SSH_SERVER_URI }} >> ~/.ssh/known_hosts
-
       # 5️⃣ Deploy the React build to the server
       - name: Deploy React App to Server
         run: |
