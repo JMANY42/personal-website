@@ -60,9 +60,6 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.SSH_SERVER_URI }} >> ~/.ssh/known_hosts
 
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_URI }} "touch thisworked.asdf"
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_URI }} "pwd"
-
       # 5️⃣ Deploy the React build to the server
       - name: Deploy React App to Server
         run: |
