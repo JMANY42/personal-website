@@ -62,11 +62,6 @@ jobs:
 
           # ssh -i ~/.ssh/id_ed25519 ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_URI }}
 
-      - name: Install cloudflared
-        run: |
-          curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared.deb
-          sudo dpkg -i cloudflared.deb
-
       # 5️⃣ Deploy the React build to the server
       - name: Deploy React App to Server
         run: |
