@@ -66,10 +66,10 @@ jobs:
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_URI }} "sudo mkdir -p $target"
 
           # Copy build folder contents
-          scp -r ~/work/personal-website/personal-website/frontend/dist ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_URI }}:~
+          scp -r -v ~/work/personal-website/personal-website/frontend/dist ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_URI }}:~
 
           # Move into correct directory
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_URI }} "sudo mv dist/* $target"
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_URI }} "sudo mv dist/* $target && rm dist"
 
           # Optional: restart nginx (run on the server via SSH)
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_URI }} "sudo nginx -t && sudo systemctl reload nginx"
