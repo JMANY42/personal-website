@@ -6,7 +6,7 @@ function App() {
     <>
       <div>
         <h1>Happy Birthday Mom!</h1>
-        <p>I love you!</p>
+        <p>I love you! <3</p>
       </div>
     </>
   )
