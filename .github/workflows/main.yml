@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main        # Production
-      - develop     # Staging
-      - feature/*   # Development previews
+      - staging     # Staging
+      - develop   # Development previews
 
 jobs:
   deploy:
@@ -37,10 +37,12 @@ jobs:
           if [ "$GITHUB_REF" = "refs/heads/main" ]; then
             echo "env=production" >> $GITHUB_ENV
             echo "target=/var/www/personal-website-prod" >> $GITHUB_ENV
-          elif [ "$GITHUB_REF" = "refs/heads/develop" ]; then
+
+          elif [ "$GITHUB_REF" = "refs/heads/staging" ]; then
             echo "env=staging" >> $GITHUB_ENV
             echo "target=/var/www/personal-website-staging" >> $GITHUB_ENV
-          else
+            
+          elif [ "$GITHUB_REF" = "refs/heads/develop" ];
             echo "env=development" >> $GITHUB_ENV
             echo "target=/var/www/personal-website-dev" >> $GITHUB_ENV
           fi
