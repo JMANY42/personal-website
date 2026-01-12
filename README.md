@@ -1,6 +1,6 @@
 # Personal Website
 
-This is my personal website to show on applications and to host projects. The website will be hosted on my own server accessed through cloudflare for DNS and tailscale for a tunnel (or similar setup). 
+This is my personal website to show on applications and to host projects. The website will be hosted on my own server in my apartment accessed via a cloudflare tunnel. 
 
 Requirements:
 - Home Page
@@ -18,5 +18,5 @@ Architecture:
 \
 TODO:
 - Make Home Page
-- Work on hosting to internet
+- Work on hosting to internet (done)
 - Plan projects page
