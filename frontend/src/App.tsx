@@ -1,17 +1,16 @@
-import './App.css'
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { routes } from "./routes.tsx";
 
 function App() {
-
   return (
-    <>
-      <div>
-        <h1>Happy Birthday Mom!</h1>
-        <p>I love you! &lt;3</p>
-        <p>Update without deleting the previous site.</p>
-        <p>This is a change made in feat/test</p>
-      </div>
-    </>
-  )
+    <BrowserRouter>
+      <Routes location={location} key={location.pathname}>
+        {routes.map((r, i) => (
+          <Route key={i} path={r.path} element={r.element} />
+        ))}
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
