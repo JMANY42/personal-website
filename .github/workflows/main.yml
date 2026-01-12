@@ -41,8 +41,8 @@ jobs:
           elif [ "$GITHUB_REF" = "refs/heads/staging" ]; then
             echo "env=staging" >> $GITHUB_ENV
             echo "target=/var/www/personal-website-staging" >> $GITHUB_ENV
-            
-          elif [ "$GITHUB_REF" = "refs/heads/develop" ];
+
+          elif [ "$GITHUB_REF" = "refs/heads/develop" ]; then
             echo "env=development" >> $GITHUB_ENV
             echo "target=/var/www/personal-website-dev" >> $GITHUB_ENV
           fi
