@@ -13,6 +13,9 @@ function Home (){
                 For now, you can check out my <a className="text-blue-300 underline" href="https://linkedin.com/in/david-jonathan-lewis">LinkedIn</a> and <a className="text-blue-300 underline" href="https://github.com/JMANY42">GitHub</a>.
             </p>
             
+            <p className="fixed bottom-0 text-[#0A6105]">
+                P.S. checkout dev.davidjonathanlewis.com and staging.davidjonathanlewis.com for the latest and (not so) greatest!
+            </p>
 
         </div>
     )
