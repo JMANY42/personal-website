@@ -1,9 +1,14 @@
 import '/src/styles/Home.css'
+import Navbar from '../components/Navbar.tsx'
 
 function Home (){
 
     return (
-        <div className="bg-[#0A6105] w-screen h-screen p-8 text-white space-y-10">
+    <div className="bg-[#0A6105] w-screen h-screen flex flex-col">
+        <div className="px-8 py-4 bg-[#70E7FF]">
+            <Navbar/>
+        </div>
+        <div className="f p-8 text-white space-y-10">
             <h1 className="text-7xl text-left">Hello</h1>
             <h2 className="text-3xl text-left">My name is Jonathan Lewis and this is my webpage</h2>
             <p className="text-xl space-y-4">
@@ -18,6 +23,7 @@ function Home (){
             </p>
 
         </div>
+    </div>
     )
 }
 

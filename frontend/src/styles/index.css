@@ -3,3 +3,7 @@
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
+
+li{
+  list-style-type: none; /* Removes the bullet points */
+}
