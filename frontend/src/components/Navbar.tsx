@@ -10,7 +10,7 @@ function Navbar() {
         {text: 'Projects', path: '/projects'}
     ];
     return (
-        <div className="flex gap-10">
+        <div className="flex gap-10 px-8 py-4 bg-[#70E7FF]">
             {options.map((option, id) => (    // Map over options to create list items
                 <li 
                     key={id}
