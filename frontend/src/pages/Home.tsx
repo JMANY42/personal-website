@@ -10,8 +10,9 @@ function Home (){
         
         <div className="p-8 text-white space-y-10">
             <h1 className="text-7xl text-left font-thin">Hello</h1>
-            <h2 className="text-3xl text-left">My name is Jonathan Lewis and this is my webpage</h2>
+            <h2 className="text-3xl text-left">My name is Jonathan Lewis and this is my website</h2>
             <p className="text-xl space-y-4">
+                My full name is David Jonathan Lewis, but I go by my middle name, Jonathan<br/>
                 It is a work in progress but this is a start<br/>
                 This webpage is being hosted on my personal server in my apartment accessed via a cloudflared tunnel (if you wanted to know)<br/>
                 I plan on hosting my portfolio on here, some information about me, and updates to my current projects<br/>
