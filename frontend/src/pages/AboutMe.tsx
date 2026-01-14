@@ -1,5 +1,6 @@
 import Navbar from '../components/Navbar.tsx'
 import Card from '../components/Card.tsx'
+import imgUrl from '/src/assets/test_img.jpg'
 
 //TODO: Make github repo just for current version of my resume. Use workflow to automatically download to server and serve on webpage.
 function AboutMe() {
@@ -24,12 +25,12 @@ function AboutMe() {
             {/* TODO: Store cards in backend and allow asynchronous loading.
                 TODO: Change max height offset to dynamically get the navbar height if possible */}
             <div className="w-1/2 grid grid-cols-2 max-h-[calc(100vh-64px)] overflow-y-scroll">
-                <Card caption="This is my lovely cat, Paws" img_path="/src/assets/test_img.jpg"/>
-                <Card caption="This is my lovely cat, Paws" img_path="/src/assets/test_img.jpg"/>
-                <Card caption="This is my lovely cat, Paws" img_path="/src/assets/test_img.jpg"/>
-                <Card caption="This is my lovely cat, Paws" img_path="/src/assets/test_img.jpg"/>
-                <Card caption="This is my lovely cat, Paws" img_path="/src/assets/test_img.jpg"/>
-                <Card caption="This is my lovely cat, Paws" img_path="/src/assets/test_img.jpg"/>
+                <Card caption="This is my lovely cat, Paws" img_path={imgUrl}/>
+                <Card caption="This is my lovely cat, Paws" img_path={imgUrl}/>
+                <Card caption="This is my lovely cat, Paws" img_path={imgUrl}/>
+                <Card caption="This is my lovely cat, Paws" img_path={imgUrl}/>
+                <Card caption="This is my lovely cat, Paws" img_path={imgUrl}/>
+                <Card caption="This is my lovely cat, Paws" img_path={imgUrl}/>
             </div>
         </div>
     </div>
