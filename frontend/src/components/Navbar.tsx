@@ -10,11 +10,11 @@ function Navbar() {
         {text: 'Projects', path: '/projects'}
     ];
     return (
-        <div className="flex gap-10 px-8 py-4 bg-[#3D5A80]">
+        <div className="flex gap-5 px-8 py-4 navbar">
             {options.map((option, id) => (    // Map over options to create list items
                 <li 
                     key={id}
-                    className="cursor-pointer text-white text-2xl"> {/* List items styling */}
+                    className="cursor-pointer text-main text-2xl"> {/* List items styling */}
                     <NavbarOption text={option.text} path={option.path}></NavbarOption>
                 </li>
             ))}
