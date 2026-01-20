@@ -37,10 +37,12 @@ jobs:
           if [ "$GITHUB_REF" = "refs/heads/main" ]; then
             echo "env=production" >> $GITHUB_ENV
             echo "target=/var/www/personal-website-prod" >> $GITHUB_ENV
+            echo "pm2restart=pm2 reload $target/backend/ecosystem.config.js --only $env" >> $GITHUB_ENV
 
           elif [ "$GITHUB_REF" = "refs/heads/staging" ]; then
             echo "env=staging" >> $GITHUB_ENV
             echo "target=/var/www/personal-website-staging" >> $GITHUB_ENV
+            echo "pm2restart=pm2 reload $target/backend/ecosystem.config.js --only $env" >> $GITHUB_ENV
 
           elif [ "$GITHUB_REF" = "refs/heads/develop" ]; then
             echo "env=development" >> $GITHUB_ENV
@@ -63,14 +65,19 @@ jobs:
         run: |
           echo "Deploying React app to $env server"
 
+          # Copies into seperate folder because of permission issues with scp
+          # Copy dist 
+          scp -r -O ~/work/personal-website/personal-website/frontend/dist ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }}:~
+
+          # Copy backend
+          scp -r -O ~/work/personal-website/personal-website/backend ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }}:~
+
           # Make sure target directory exists
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }} "sudo mkdir -p $target"
 
-          # Copy dist
-          scp -r -O ~/work/personal-website/personal-website/frontend/dist ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }}:$target
-
-          # Copy backend
-          scp -r -O ~/work/personal-website/personal-website/backend ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }}:$target
+          # Copy into correct directory
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }} "sudo cp -r dist $target && rm -rf dist"
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }} "sudo cp -r backend $target && rm -rf backend"
 
           # restart nginx and pm2
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }} "sudo nginx -t && sudo systemctl reload nginx"
