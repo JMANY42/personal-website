@@ -5,4 +5,5 @@ export const routes = [
   {path: "/happybirthdaymom", element: <HappyBirthdayMom /> },
   {path: "/about-me", element: <AboutMe /> },
   {path: "/projects", element: <Projects /> },
+  { path: "/projects/:projectPath", element: <Projects />},
 ];
