@@ -19,7 +19,7 @@ console.log('running server.js');
 
 
 app.use("/api/health", healthRoutes);
-app.use("/api/project-info", projectRoutes);
+app.use("/api/projects", projectRoutes);
 
 app.listen(parseInt(PORT, 10), () => {
   console.log('Server running at http://localhost:',PORT, '/');
