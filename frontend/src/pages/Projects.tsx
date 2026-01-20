@@ -1,44 +1,52 @@
+import { useEffect, useState } from "react"
 import Navbar from '../components/Navbar.tsx'
 import ProjectCard from '../components/projects/ProjectCard.tsx'
-import Project from '../components/projects/Project.tsx'
+import ProjectOverview from '../components/projects/ProjectOverview.tsx'
 import { useNavigate, useLocation } from "react-router-dom";
-import { useEffect } from "react"
+import  { fetchProjects } from '../api/projects.ts'
+import type { Project } from '../types/project.ts'
 
 function Projects() {
     const location = useLocation();
     const navigate = useNavigate();
-    const projects = [
-        {
-            title: "Personal Website",
-            description: "My personal website (this one right now). Includes a platform to showcase technical projects, live status information for deployed projects, and information about me.",
-            tech: ["React","Teailwind"],
-            github: "https://github.com/JMANY42/personal-website",
-            demo: "https://davidjonathanlewis.com",
-            status: "Development",
-            path: 'personal-website',
-        },{
-            title: "Personal Server",
-            description: "Converted my PC into an Ubuntu Server to host my website and other public and private applications. Connected to the internet via a cloudflared tunnel with WARP for ssh access for remote deployments.",
-            tech: ["Cloudflare","Networking","Nginx",],
-            status: "Launched",
-            path: 'server',
-        },{
-            title: "Personal Website3",
-            description: "description",
-            tech: ["React","Teailwind"],
-            github: "https://github.com/JMANY42/personal-website",
-            status: "Development",
-            path: 'personal-website3',
-        }
-    ]
+    const [projects, setProjects] = useState<Project[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
+    //display first project if no project has been selected
     const pathEnding = location.pathname.substring(location.pathname.lastIndexOf('/')+1);
-
     useEffect(() => {
-        if(pathEnding === 'projects') {
+        if(projects[0] && pathEnding === 'projects') {
             navigate(projects[0].path);
         }
     })
+
+    // Fetch projects
+    useEffect(() => {
+        let isMounted = true; // safe for cleanup
+        setLoading(true);
+
+        fetchProjects()
+        .then((data) => {
+            console.log("DATA ",data)
+            if (isMounted) setProjects(data);
+        })
+        .catch((err) => {
+            if (isMounted) setError(err.message);
+        })
+        .finally(() => {
+            if (isMounted) setLoading(false);
+        });
+
+
+        return () => {
+        isMounted = false; // cleanup in case component unmounts
+        };
+
+    }, []); // empty dependency → runs once on mount
+
+    if (loading) return <p>Loading projects...</p>;
+    if (error) return <p>Error: {error}</p>;
     
 
     const selectedProjectIndex = projects.findIndex(project => project.path === pathEnding);
@@ -62,7 +70,7 @@ function Projects() {
                 </div>
             </div>
             <div className="w-1/2 bg-surface">
-                <Project {...projects[selectedProjectIndex]}/>
+                <ProjectOverview {...projects[selectedProjectIndex]}/>
             </div>
         </div>
     </div>

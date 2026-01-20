@@ -1,20 +1,8 @@
-import { useNavigate } from 'react-router-dom'
 import Markdown from 'react-markdown'
-import PersonalWebsiteMarkdown from '/src/assets/readmes/PersonalServerMarkdown.md?raw'
 import StatusTag from '../StatusTag.tsx'
+import type { Project } from '../../types/project.ts'
 
-export interface Project {
-    title: string;
-    description: string;
-    tech: string[];
-    github?: string;
-    demo?: string;
-    status: string;
-    path: string;
-}
-
-
-function Project ({ title, description, tech, github, demo, status, path }: Project) {
+function ProjectOverview ({ title, tech, github, demo, status, content }: Project) {
 
     return (
         <div className="bg-surface p-5 h-full overflow-y-scroll">
@@ -47,11 +35,11 @@ function Project ({ title, description, tech, github, demo, status, path }: Proj
             </div>}
 
             <div className="text-white prose prose-invert max-w-none prose-p:text-(--text-secondary) prose-p:text-lg prose-ul:text-(--text-secondary)">
-                <Markdown>{PersonalWebsiteMarkdown}</Markdown>
+                <Markdown>{content}</Markdown>
             </div>
         </div>
 
     )
 }
 
-export default Project
+export default ProjectOverview

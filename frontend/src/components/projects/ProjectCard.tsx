@@ -1,4 +1,4 @@
-import type { Project } from './Project.tsx'
+import type { Project } from '../../types/project.ts'
 import { useNavigate } from "react-router-dom";
 import StatusTag from '../StatusTag.tsx'
 
