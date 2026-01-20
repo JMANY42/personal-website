@@ -63,14 +63,15 @@ jobs:
         run: |
           echo "Deploying React app to $env server"
 
-          # Copy build folder contents
-          scp -r -O ~/work/personal-website/personal-website/frontend/dist ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }}:~
-
           # Make sure target directory exists
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }} "sudo rm -rf $target && sudo mkdir -p $target"
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }} "sudo mkdir -p $target"
 
-          # Copy into correct directory
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }} "sudo cp -r dist/* $target && rm -rf dist"
+          # Copy dist
+          scp -r -O ~/work/personal-website/personal-website/frontend/dist ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }}:$target
 
-          # Optional: restart nginx (run on the server via SSH)
+          # Copy backend
+          scp -r -O ~/work/personal-website/personal-website/backend ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }}:$target
+
+          # restart nginx and pm2
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }} "sudo nginx -t && sudo systemctl reload nginx"
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SSH_SERVER_IP }} "pm2 reload $target/backend/ecosystem.config.cjs --only $env"
