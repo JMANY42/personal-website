@@ -1,7 +1,7 @@
 import type { Project } from '../types/project.tsx'
 
 export async function fetchProjects(): Promise<Project[]> {
-  const res = await fetch("http://localhost:5000/api/projects");
+  const res = await fetch("/api/projects");
   if (!res.ok) throw new Error("Failed to fetch projects");
   return res.json();
 }
