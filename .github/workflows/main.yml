@@ -37,12 +37,10 @@ jobs:
           if [ "$GITHUB_REF" = "refs/heads/main" ]; then
             echo "env=production" >> $GITHUB_ENV
             echo "target=/var/www/personal-website-prod" >> $GITHUB_ENV
-            echo "pm2restart=pm2 reload $target/backend/ecosystem.config.js --only $env" >> $GITHUB_ENV
 
           elif [ "$GITHUB_REF" = "refs/heads/staging" ]; then
             echo "env=staging" >> $GITHUB_ENV
             echo "target=/var/www/personal-website-staging" >> $GITHUB_ENV
-            echo "pm2restart=pm2 reload $target/backend/ecosystem.config.js --only $env" >> $GITHUB_ENV
 
           elif [ "$GITHUB_REF" = "refs/heads/develop" ]; then
             echo "env=development" >> $GITHUB_ENV
