@@ -3,7 +3,7 @@ module.exports = {
     {
       name: "development",
       script: "./src/index.js",
-      cwd: "/var/www/personal-website-dev/", // current working directory
+      cwd: "/var/www/personal-website-dev/backend/", // current working directory
       watch: true, // auto-reload on file changes (useful for dev)
       env: {
         NODE_ENV: "development",
@@ -13,7 +13,7 @@ module.exports = {
     {
       name: "staging",
       script: "./src/index.js",
-      cwd: "/var/www/personal-website-staging/",
+      cwd: "/var/www/personal-website-staging/backend/",
       watch: false, // usually staging is more stable
       env: {
         NODE_ENV: "staging",
@@ -23,7 +23,7 @@ module.exports = {
     {
       name: "production",
       script: "./src/index.js",
-      cwd: "/var/www/personal-website-prod/",
+      cwd: "/var/www/personal-website-prod/backend/",
       watch: false, // production should not auto-reload
       instances: 1, // single instance; can use cluster if needed
       autorestart: true,
