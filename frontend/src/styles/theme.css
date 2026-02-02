@@ -52,5 +52,5 @@
 
 .nav-link-active {
   color: var(--text-primary);
-  border-bottom: 2px solid var(--brand);
+  border-bottom: 2px solid var(--accent);
 }
