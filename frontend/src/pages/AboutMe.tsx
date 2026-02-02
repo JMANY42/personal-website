@@ -14,7 +14,7 @@ function AboutMe() {
         {/* NAVBAR */}
         <Navbar/>
 
-        <div className="flex overflow-hidden">
+        <div className="flex overflow-hidden page-padding">
             <div className="p-8 text-main w-1/2">
                 <h1 className="text-7xl text-left font-thin text-accent">About Me</h1>
                 <h2 className="text-3xl font-bold pt-10">Who am I?</h2>
