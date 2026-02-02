@@ -1,0 +1,20 @@
+[
+    {
+      "id": "0",
+      "title": "Home Page UI",
+      "content": "I changed the layout of the home page to include a carousel and changed the overall UI.",
+      "path": "/projects/personal-website"
+    },
+    {
+      "id": "1",
+      "title": "Personal Website",
+      "content": "I have recently launched v1.0 of my website. You're already looking at it!",
+      "path": "/projects/personal-website"
+    },
+    {
+      "id": "2",
+      "title": "Personal Server",
+      "content": "I have recently opened up my server to the internet via a cloudflared tunnel. My server is serving this webpage right now!",
+      "path": "/projects/server"
+    }
+]

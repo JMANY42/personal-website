@@ -3,47 +3,45 @@ import Navbar from '../components/Navbar.tsx'
 import Carousel from '../components/Carousel/Carousel.tsx'
 import CarouselArrows from '../components/Carousel/CarouselArrows.tsx'
 import CarouselIndicators from '../components/Carousel/CarouselIndicators.tsx'
-// import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Slide from '../components/Carousel/Slide.tsx'
-// import type { SlideResponse } from '../types/slide.ts'
+import type { SlideResponse } from '../types/slide.ts'
 import { useNavigate } from 'react-router-dom'
+import  { fetchSlides } from '../api/slides.ts'
+
 function Home() {
-    const navigate = useNavigate();
-  // const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [slides, setSlides] = useState<SlideResponse[]>([]);
+
+  // Fetch slides
+  useEffect(() => {
+      let isMounted = true; // safe for cleanup
+      setLoading(true);
+
+      fetchSlides()
+      .then((data) => {
+          console.log("DATA ",data)
+          if (isMounted) setSlides(data);
+      })
+      .catch((err) => {
+          if (isMounted) setError(err.message);
+      })
+      .finally(() => {
+          if (isMounted) setLoading(false);
+      });
+
+
+      return () => {
+      isMounted = false; // cleanup in case component unmounts
+      };
+
+  }, []); // empty dependency → runs once on mount
+
   
-  const slides = [
-    {
-      id: "0",
-      title: "Home Page UI",
-      content: "I changed the layout of the home page to include a carousel and changed the overall UI.",
-      path: "/projects/personal-website",
-    },
-    {
-      id: "1",
-      title: "Personal Website",
-      content: "I have recently launched v1.0 of my website. You're already looking at it!",
-      path: "/projects/personal-website",
-    },
-    {
-      id: "2",
-      title: "Personal Server",
-      content: "I have recently opened up my server to the internet via a cloudflared tunnel. My server is serving this webpage right now!",
-      path: "/projects/server",
-    }
-  ];
-
-  const renderedSlides = slides.map((slide) => (
-    <Slide key={slide.id} slide={slide} />
-  ));
-
-  // useEffect(() => {
-  //   const fetchSlides = async () => {
-  //     const res = await fetch("/api/slides");
-  //     const data: SlideResponse[] = await res.json();
-  //     setLoading(false);
-  //   };
-  //   fetchSlides();
-  // }, []);
+  if (loading) return <p>Loading updates...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="h-screen w-full bg-bg flex flex-col overflow-hidden">
@@ -149,7 +147,9 @@ function Home() {
                   renderArrows={(api) => <CarouselArrows api={api} />}
                   renderIndicators={(api) => <CarouselIndicators api={api} />}
                 >
-                  {renderedSlides}
+                  {slides.map((slide) => (
+                    <Slide key={slide.id} slide={slide} />
+                  ))}
                 </Carousel>
               </div>
             </section>

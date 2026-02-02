@@ -1,4 +1,4 @@
-import type { Project } from '../types/project.tsx'
+import type { Project } from '../types/project.ts'
 
 export async function fetchProjects(): Promise<Project[]> {
   const res = await fetch("http://localhost:5000/api/projects");    //LOCAL DEVELOPMENT ONLY
