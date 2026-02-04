@@ -69,7 +69,8 @@ function Projects() {
                     ))}
                 </div>
             </div>
-            <div className="w-1/2 bg-surface">
+            <div className="w-0.5 self-stretch bg-gray-700"/>
+            <div className="w-1/2 pl-2">
                 <ProjectOverview {...projects[selectedProjectIndex]}/>
             </div>
         </div>
