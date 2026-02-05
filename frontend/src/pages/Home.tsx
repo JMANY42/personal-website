@@ -51,7 +51,7 @@ function Home() {
   };
 
   
-  if (loading) return <p>Loading updates...</p>;
+  // if (loading) return <p>Loading updates...</p>;
   if (error) return <p>Error: {error}</p>;
 
   return (
@@ -129,7 +129,8 @@ function Home() {
             </section>
 
             {/* RECENT UPDATES SECTION */}
-            <section className="animate-slideInRight">
+
+            { !loading && (<section className="animate-slideInRight">
               <div className="flex flex-col gap-2">
                 <h2 className="text-4xl md:text-5xl font-semibold text-main flex items-center gap-3">
                   <span className="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
@@ -164,7 +165,7 @@ function Home() {
                   ))}
                 </Carousel>
               </div>
-            </section>
+            </section>)}
           </div>
 
           {/* FOOTER NOTE */}
