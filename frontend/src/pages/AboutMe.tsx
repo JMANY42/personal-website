@@ -6,6 +6,7 @@ import Cello from '/src/assets/Cello.jpg'
 import Friends from '/src/assets/Friends.jpg'
 import Galaxsea from '/src/assets/Galaxsea.jpg'
 import Heartstrings from '/src/assets/Heartstrings.jpg'
+import ResumeLink from '../components/ResumeLink.tsx'
 
 //TODO: Make github repo just for current version of my resume. Use workflow to automatically download to server and serve on webpage.
 function AboutMe() {
@@ -15,16 +16,18 @@ function AboutMe() {
         <Navbar/>
 
         <div className="flex overflow-hidden page-padding">
-            <div className="p-8 text-main w-1/2 animate-slideInLeft">
-                <h1 className="text-7xl text-left font-thin text-accent">About Me</h1>
-                <h2 className="text-3xl font-bold pt-10">Who am I?</h2>
-                    <p className="text-xl text-muted">My name is Jonathan Lewis. I am a second year CS student at UTD and a part of the National Merit Scholarship Program, UTD Computing Scholars (CS^2), and UTD CV Honors.</p>
-                <h2 className="text-3xl font-bold pt-10">What am I passionate about?</h2>
-                    <p className="text-xl text-muted">I have many interests including autonomous robotics, computer networking, and, in general, how technology interacts with the physical world. My favorite part about making this website was setting up and routing the server that it is hosted on.</p>
-                <h2 className="text-3xl font-bold pt-10">Am I just a nerd?</h2>
-                    <p className="text-xl text-muted">No! I have several differet hobbies outside of tech. I am a cellist in the UTD orchestra and love listening to and playing music. I also love spending time with my wonderful friends.</p>
-                <h2 className="text-3xl font-bold pt-10">Why should you hire me?</h2>
-                    <p className="text-xl text-muted">There's no good generalized answer to that question. However, if my resume {/* Make this a link */}doesn't convince you, please look through my projects to get a better understanding of my capabilities.</p>
+            <div className="p-8 text-main w-1/2">
+                <h1 className="text-7xl text-left font-thin text-accent animate-fadeInFirst">About Me</h1>
+                <div className="animate-slideInLeft">
+                    <h2 className="text-3xl font-bold pt-10">Who am I?</h2>
+                        <p className="text-xl text-muted">My name is Jonathan Lewis. I am a second year CS student at UTD and a part of the National Merit Scholarship Program, UTD Computing Scholars (CS^2), and UTD CV Honors.</p>
+                    <h2 className="text-3xl font-bold pt-10">What am I passionate about?</h2>
+                        <p className="text-xl text-muted">I have many interests including autonomous robotics, computer networking, and, in general, how technology interacts with the physical world. My favorite part about making this website was setting up and routing the server that it is hosted on.</p>
+                    <h2 className="text-3xl font-bold pt-10">Am I just a nerd?</h2>
+                        <p className="text-xl text-muted">No! I have several differet hobbies outside of tech. I am a cellist in the UTD orchestra and love listening to and playing music. I also love spending time with my wonderful friends.</p>
+                    <h2 className="text-3xl font-bold pt-10">Why should you hire me?</h2>
+                        <p className="text-xl text-muted">There's no good generalized answer to that question. However, if my <ResumeLink svg={false}/> doesn't convince you, please look through my projects to get a better understanding of my capabilities.</p>
+                </div>
             </div>
             {/* TODO: Store cards in backend and allow asynchronous loading.
                 TODO: Change max height offset to dynamically get the navbar height if possible */}
