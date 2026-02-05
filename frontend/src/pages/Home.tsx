@@ -8,6 +8,7 @@ import Slide from '../components/Carousel/Slide.tsx'
 import type { SlideResponse } from '../types/slide.ts'
 import { useNavigate } from 'react-router-dom'
 import  { fetchSlides } from '../api/slides.ts'
+import { downloadFile } from '../api/downloadFile.ts'
 
 function Home() {
   const navigate = useNavigate();
@@ -38,6 +39,16 @@ function Home() {
       };
 
   }, []); // empty dependency → runs once on mount
+
+  const handleDownloadResume = async (e: React.MouseEvent<HTMLAnchorElement>): Promise<void> => {
+    e.preventDefault();
+    
+    try {
+      await downloadFile('resume', 'DavidLewis_Resume');
+    } catch (error) {
+      console.error('Error downloading resume:', error instanceof Error ? error.message : 'Unknown error');
+    }
+  };
 
   
   if (loading) return <p>Loading updates...</p>;
@@ -105,6 +116,7 @@ function Home() {
 
                 <a 
                   href="/resume.pdf"
+                  onClick={handleDownloadResume}
                   className="group inline-flex items-center gap-2 text-lg text-accent hover:text-main transition-all duration-300"
                 >
                   <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
