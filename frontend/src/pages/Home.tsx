@@ -1,4 +1,3 @@
-import '/src/styles/Home.css'
 import Navbar from '../components/Navbar.tsx'
 import Carousel from '../components/Carousel/Carousel.tsx'
 import CarouselArrows from '../components/Carousel/CarouselArrows.tsx'
@@ -63,7 +62,7 @@ function Home() {
       <main className="flex-1 w-full page-padding py-8 md:py-12 overflow-y-auto">
         <div className="w-full h-full">
           {/* HERO SECTION */}
-          <section className="mb-8 md:mb-12 animate-fadeIn max-w-5xl mx-auto">
+          <section className="mb-8 md:mb-12 animate-fadeInFirst max-w-5xl mx-auto">
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-thin text-accent mb-4 tracking-tight">
               Hello
             </h1>

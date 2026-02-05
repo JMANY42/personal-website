@@ -1,5 +1,17 @@
 [
     {
+      "id": "4",
+      "title": "Resume",
+      "content": "My Resume is now downloadable from the website",
+      "path": "/"
+    },
+    {
+      "id": "3",
+      "title": "Site Animations",
+      "content": "The website now has animations to smooth abrupt page transitions.",
+      "path": "/"
+    },
+    {
       "id": "0",
       "title": "Home Page UI",
       "content": "I changed the layout of the home page to include a carousel and changed the overall UI.",

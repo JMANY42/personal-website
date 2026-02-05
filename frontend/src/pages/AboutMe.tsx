@@ -15,7 +15,7 @@ function AboutMe() {
         <Navbar/>
 
         <div className="flex overflow-hidden page-padding">
-            <div className="p-8 text-main w-1/2">
+            <div className="p-8 text-main w-1/2 animate-slideInLeft">
                 <h1 className="text-7xl text-left font-thin text-accent">About Me</h1>
                 <h2 className="text-3xl font-bold pt-10">Who am I?</h2>
                     <p className="text-xl text-muted">My name is Jonathan Lewis. I am a second year CS student at UTD and a part of the National Merit Scholarship Program, UTD Computing Scholars (CS^2), and UTD CV Honors.</p>
@@ -28,7 +28,7 @@ function AboutMe() {
             </div>
             {/* TODO: Store cards in backend and allow asynchronous loading.
                 TODO: Change max height offset to dynamically get the navbar height if possible */}
-            <div className="w-1/2 grid grid-cols-2 h-full overflow-y-auto">
+            <div className="w-1/2 grid grid-cols-2 h-full overflow-y-auto animate-slideInRight">
                 <PictureCard caption="My ACM Projects team after winning first place" img_path={ACM}/>
                 <PictureCard caption="My cheerful brother" img_path={Brother}/>
                 <PictureCard caption="UTD Galaxsea at the 2025 RoboBoat competition" img_path={Galaxsea}/>

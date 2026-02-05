@@ -35,8 +35,19 @@
   }
 }
 
-.animate-fadeIn {
+.animate-fadeInFirst {
   animation: fadeIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.7s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-slideInLeftFirst {
+  animation: slideInLeft 0.7s ease-out forwards;
+  opacity: 0;
 }
 
 .animate-slideInLeft {

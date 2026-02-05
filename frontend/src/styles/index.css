@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @import "./theme.css";
+@import "./transitions.css";
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
