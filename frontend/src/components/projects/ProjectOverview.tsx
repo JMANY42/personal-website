@@ -5,7 +5,7 @@ import type { Project } from '../../types/project.ts'
 function ProjectOverview ({ title, tech, github, demo, status, content }: Project) {
 
     return (
-        <div className="bg-surface p-5 h-full overflow-y-scroll">
+        <div className="p-5 h-full overflow-y-scroll">
             <div className="flex gap-5 items-center">
                 <h2 className="text-5xl font-bold text-main">{title}</h2>
                 <div className="flex gap-3 items-center">

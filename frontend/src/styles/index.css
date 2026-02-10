@@ -1,7 +1,7 @@
 @import "tailwindcss";
-@import "./theme.css";
-
 @plugin "@tailwindcss/typography";
+@import "./theme.css";
+@import "./transitions.css";
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -9,4 +9,10 @@
 
 li{
   list-style-type: none; /* Removes the bullet points */
+}
+
+@layer components {
+  .page-padding {
+    @apply px-8 md:px-12 lg:px-20 xl:px-24;
+  }
 }

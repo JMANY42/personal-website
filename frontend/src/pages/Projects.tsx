@@ -45,7 +45,7 @@ function Projects() {
 
     }, []); // empty dependency → runs once on mount
 
-    if (loading) return <p>Loading projects...</p>;
+    // if (loading) return <p>Loading projects...</p>;
     if (error) return <p>Error: {error}</p>;
     
 
@@ -56,9 +56,9 @@ function Projects() {
         <Navbar/>
         <div className="flex h-full overflow-hidden">
             <div className="p-8 text-main w-1/2 h-full overflow-y-auto">
-                <h1 className="text-7xl text-left text-main font-thin pb-8 text-accent">Projects</h1>
+                <h1 className="text-7xl text-left text-main font-thin pb-8 text-accent animate-slideInLeftFirst">Projects</h1>
                 <div className="grid grid-cols-2 gap-x-4 gap-y-8">
-                    {projects.map((project, id) => (    // Map over options to create list items
+                    { !loading && projects.map((project, id) => (    // Map over options to create list items
                         <div onClick={() => console.log(project.title)}> {/* change URL parameters */}
                             <li 
                                 key={id}
@@ -69,8 +69,9 @@ function Projects() {
                     ))}
                 </div>
             </div>
-            <div className="w-1/2 bg-surface">
-                <ProjectOverview {...projects[selectedProjectIndex]}/>
+            <div className="w-0.5 self-stretch bg-gray-700 animate-fadeIn"/>
+            <div className="w-1/2 pl-2 animate-slideInRight">
+                {!loading && (<ProjectOverview {...projects[selectedProjectIndex]}/>)}
             </div>
         </div>
     </div>
