@@ -7,7 +7,8 @@ function Navbar() {
     const options = [
         {text: 'Home', path: '/'}, 
         {text: 'About Me', path: '/about-me'}, 
-        {text: 'Projects', path: '/projects'}
+        {text: 'Projects', path: '/projects'},
+        {text: 'Contact Me', path: '/contact'}
     ];
     return (
         <div className="flex gap-5 px-8 py-4 navbar">

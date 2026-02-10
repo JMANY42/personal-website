@@ -6,6 +6,7 @@ import healthRoutes from './routes/healthRoutes.js';
 import projectRoutes from './routes/projectRoutes.js';
 import slideRoutes from './routes/slideRoutes.js';
 import downloadRoutes from './routes/downloadRoutes.js';
+import contactRoutes from './routes/contactRoutes.js';
 dotenv.config();
 
 const app = express();
@@ -23,6 +24,7 @@ app.use("/api/health", healthRoutes);
 app.use("/api/projects", projectRoutes);
 app.use("/api/slides", slideRoutes);
 app.use("/api/downloads",downloadRoutes);
+app.use("/api/contact",contactRoutes);
 
 app.listen(parseInt(PORT, 10), () => {
   console.log('Server running at ',PORT, '/');

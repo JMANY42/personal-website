@@ -30,6 +30,7 @@
 .hover\:bg-brand:hover     { background-color: var(--brand); }
 .hover\:bg-brand-muted:hover { background-color: var(--brand-muted); }
 
+.focus\:ring-accent:focus   {--tw-ring-color: var(--accent); }
 .text-main    { color: var(--text-primary); }
 .text-muted  { color: var(--text-secondary); }
 .text-accent { color: var(--accent); }
