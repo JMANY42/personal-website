@@ -1,12 +1,11 @@
 import type { SlideResponse } from '../types/slide.ts'
+import getCompleteApiPath from '../services/getCompleteApiPath.ts'
 
-const apiPath = '/api/slides'
-const fullApiPath = import.meta.env.MODE === 'production'
-  ? apiPath
-  : 'http://localhost:5000'+apiPath;
+const apiPath = getCompleteApiPath('slides');
+
     
 export async function fetchSlides(): Promise<SlideResponse[]> {
-  const res = await fetch(fullApiPath);
+  const res = await fetch(apiPath);
 
   if (!res.ok) throw new Error("Failed to fetch slides");     
   return res.json();

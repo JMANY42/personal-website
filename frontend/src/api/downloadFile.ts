@@ -1,11 +1,10 @@
-const apiPath = '/api/downloads'
-const fullApiPath = import.meta.env.MODE === 'production'
-  ? apiPath
-  : 'http://localhost:5000'+apiPath;
+import getCompleteApiPath from '../services/getCompleteApiPath.ts'
+
+const apiPath = getCompleteApiPath('downloads');
   
 
-export const downloadFile = async (path: string, filename: string): Promise<void> => {
-  const response: Response = await fetch(`${fullApiPath}/${path}`);
+export const downloadFile = async (filePath: string, filename: string): Promise<void> => {
+  const response: Response = await fetch(`${apiPath}/${filePath}`);
   
   if (!response.ok) {
     throw new Error(`Failed to fetch file: ${response.statusText}`);
