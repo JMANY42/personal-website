@@ -13,6 +13,8 @@ const transporter = nodemailer.createTransport({
 });
 
 export async function forwardMessage(req, res) {
+  console.log("EMAIL: ",process.env.EMAIL_USER);
+
   try {
     console.log("req",req.body);
     const { name, email, subject, message } = req.body;
