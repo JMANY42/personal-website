@@ -64,12 +64,12 @@ const Contact: React.FC = () => {
 
     <div className="bg-bg flex-1 px-4 sm:px-6 lg:px-8 overflow-y-auto flex items-center">
       <div className="max-w-3xl mx-auto w-full py-4 sm:py-6">
-        <div className="text-center mb-4 sm:mb-8 space-y-1 sm:space-y-2 animate-fadeInFirst">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-thin text-accent">
+        <div className="text-center mb-2 sm:mb-4 space-y-1 sm:space-y-2 animate-fadeInFirst">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-thin text-accent">
             Get in Touch
           </h1>
           <p className="text-sm sm:text-base md:text-lg text-muted px-4">
-            Have a question or want to hire me? I'd love to hear from you.
+            Have a question? &nbsp;Want to hire me? &nbsp;Found a bug?<br/>I'd love to hear from you!
           </p>
         </div>
 
