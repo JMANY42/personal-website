@@ -77,7 +77,7 @@ export async function forwardMessage(req, res) {
   } catch (error) {
     console.error('Error sending email:', error);
     res.status(500).json({ 
-      error: 'Failed to send email. Please try again later.' 
+      error: `Failed to send email. Please try again later.\n ${error}` 
     });
   }
 };
