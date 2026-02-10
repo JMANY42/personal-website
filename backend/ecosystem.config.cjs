@@ -5,7 +5,6 @@ module.exports = {
       script: "./src/index.js",
       cwd: "/var/www/personal-website-dev/backend/",
       watch: true, // auto-reload on file changes (useful for dev)
-      node_args: '-r dotenv/config',
       env: {
         NODE_ENV: "development",
         PORT: 5000
@@ -25,7 +24,6 @@ module.exports = {
       script: "./src/index.js",
       cwd: "/var/www/personal-website-staging/backend/",
       watch: false, // usually staging is more stable
-      node_args: '-r dotenv/config',
       env: {
         NODE_ENV: "staging",
         PORT: 5001
@@ -48,7 +46,6 @@ module.exports = {
       watch: false, // production should not auto-reload
       instances: 1, // single instance; can use cluster if needed
       exec_mode: "cluster", // Enable cluster mode for better performance
-      node_args: '-r dotenv/config',
       env: {
         NODE_ENV: "production",
         PORT: 5002
