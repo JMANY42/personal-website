@@ -52,25 +52,24 @@ function Projects() {
     const selectedProjectIndex = projects.findIndex(project => project.path === pathEnding);
 
     return (
-    <div className="bg-bg w-screen h-screen flex flex-col">
+    <div className="bg-bg w-full h-screen flex flex-col">
         <Navbar/>
-        <div className="flex h-full overflow-hidden">
-            <div className="p-8 text-main w-1/2 h-full overflow-y-auto">
-                <h1 className="text-7xl text-left text-main font-thin pb-8 text-accent animate-slideInLeftFirst">Projects</h1>
-                <div className="grid grid-cols-2 gap-x-4 gap-y-8">
-                    { !loading && projects.map((project, id) => (    // Map over options to create list items
-                        <div onClick={() => console.log(project.title)}> {/* change URL parameters */}
+        <div className="flex flex-col lg:flex-row flex-1 overflow-hidden">
+            <div className="p-4 sm:p-6 lg:p-8 text-main w-full lg:w-1/2 overflow-y-auto">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-left text-main font-thin pb-6 sm:pb-8 text-accent animate-slideInLeftFirst">Projects</h1>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-x-4 sm:gap-y-8">
+                    { !loading && projects.map((project, id) => (    
+                        <div onClick={() => console.log(project.title)} key={id}>
                             <li 
-                                key={id}
-                                className="text-main text-2xl"> {/* List items styling */}
+                                className="text-main text-xl sm:text-2xl">
                                 <ProjectCard {...project}/>
                             </li>
                         </div>
                     ))}
                 </div>
             </div>
-            <div className="w-0.5 self-stretch bg-gray-700 animate-fadeIn"/>
-            <div className="w-1/2 pl-2 animate-slideInRight">
+            <div className="hidden lg:block w-0.5 self-stretch bg-gray-700 animate-fadeIn"/>
+            <div className="w-full lg:w-1/2 pl-0 lg:pl-2 overflow-y-auto animate-slideInRight">
                 {!loading && (<ProjectOverview {...projects[selectedProjectIndex]}/>)}
             </div>
         </div>

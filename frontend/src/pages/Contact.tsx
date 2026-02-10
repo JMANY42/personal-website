@@ -59,16 +59,16 @@ const Contact: React.FC = () => {
 };
 
   return (
-    <div className="bg-bg w-screen h-screen flex flex-col">
+    <div className="bg-bg w-full min-h-screen flex flex-col">
     <Navbar/>
 
-    <div className="bg-bg py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div className="bg-bg py-6 sm:py-12 px-4 sm:px-6 lg:px-8 flex-1 overflow-y-auto">
       <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-12 space-y-2 animate-fadeInFirst">
-          <h1 className="text-7xl font-thin text-accent">
+        <div className="text-center mb-8 sm:mb-12 space-y-2 animate-fadeInFirst">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-thin text-accent">
             Get in Touch
           </h1>
-          <p className="text-lg text-muted">
+          <p className="text-base sm:text-lg text-muted px-4">
             Have a question or want to hire me? I'd love to hear from you.
           </p>
         </div>
