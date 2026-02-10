@@ -1,5 +1,11 @@
 [
     {
+      "id": "5",
+      "title": "Contact Me",
+      "content": "You can now send me a message straight from the website!",
+      "path": "/contact"
+    },
+    {
       "id": "4",
       "title": "Resume",
       "content": "My Resume is now downloadable from the website",
