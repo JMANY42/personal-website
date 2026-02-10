@@ -59,27 +59,27 @@ const Contact: React.FC = () => {
 };
 
   return (
-    <div className="bg-bg w-screen h-screen flex flex-col">
+    <div className="bg-bg w-full h-screen flex flex-col overflow-hidden">
     <Navbar/>
 
-    <div className="bg-bg py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-12 space-y-2 animate-fadeInFirst">
-          <h1 className="text-7xl font-thin text-accent">
+    <div className="bg-bg flex-1 px-4 sm:px-6 lg:px-8 overflow-y-auto flex items-center">
+      <div className="max-w-3xl mx-auto w-full py-4 sm:py-6">
+        <div className="text-center mb-2 sm:mb-4 space-y-1 sm:space-y-2 animate-fadeInFirst">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-thin text-accent">
             Get in Touch
           </h1>
-          <p className="text-lg text-muted">
-            Have a question or want to hire me? I'd love to hear from you.
+          <p className="text-sm sm:text-base md:text-lg text-muted px-4">
+            Have a question? &nbsp;Want to hire me? &nbsp;Found a bug?<br/>I'd love to hear from you!
           </p>
         </div>
 
-        <div className="bg-surface rounded-2xl shadow-xl p-8 md:p-12 border border-neutral-800 animate-fadeIn">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="bg-surface rounded-2xl shadow-xl p-4 sm:p-6 md:p-10 border border-neutral-800 animate-fadeIn">
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5">
               <div>
                 <label 
                   htmlFor="name" 
-                  className="block text-sm font-medium text-main mb-2"
+                  className="block text-sm font-medium text-main mb-1 sm:mb-2"
                 >
                   Name
                 </label>
@@ -90,7 +90,7 @@ const Contact: React.FC = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition text-main placeholder:text-main"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition text-main placeholder:text-main text-sm sm:text-base"
                   placeholder="John Doe"
                 />
               </div>
@@ -98,7 +98,7 @@ const Contact: React.FC = () => {
               <div>
                 <label 
                   htmlFor="email" 
-                  className="block text-sm font-medium text-main mb-2"
+                  className="block text-sm font-medium text-main mb-1 sm:mb-2"
                 >
                   Email
                 </label>
@@ -109,7 +109,7 @@ const Contact: React.FC = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition text-main placeholder:text-main"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition text-main placeholder:text-main text-sm sm:text-base"
                   placeholder="john@example.com"
                 />
               </div>
@@ -118,7 +118,7 @@ const Contact: React.FC = () => {
             <div>
               <label 
                 htmlFor="subject" 
-                className="block text-sm font-medium text-main mb-2"
+                className="block text-sm font-medium text-main mb-1 sm:mb-2"
               >
                 Subject
               </label>
@@ -129,7 +129,7 @@ const Contact: React.FC = () => {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition text-main placeholder:text-main"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition text-main placeholder:text-main text-sm sm:text-base"
                 placeholder="How can I help?"
               />
             </div>
@@ -137,7 +137,7 @@ const Contact: React.FC = () => {
             <div>
               <label 
                 htmlFor="message" 
-                className="block text-sm font-medium text-main mb-2"
+                className="block text-sm font-medium text-main mb-1 sm:mb-2"
               >
                 Message
               </label>
@@ -147,8 +147,8 @@ const Contact: React.FC = () => {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                rows={6}
-                className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition resize-none text-main placeholder:text-main"
+                rows={4}
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition resize-none text-main placeholder:text-main text-sm sm:text-base"
                 placeholder="Tell me more about your inquiry..."
               />
             </div>
@@ -156,21 +156,21 @@ const Contact: React.FC = () => {
             
 
             {submitSuccess && (
-              <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg">
-                <p className="font-medium">Success! Your message has been sent.</p>
+              <div className="bg-green-50 border border-green-200 text-green-800 px-3 sm:px-4 py-2 sm:py-3 rounded-lg">
+                <p className="font-medium text-sm sm:text-base">Success! Your message has been sent.</p>
               </div>
             )}
 
             {errorMessage && (
-              <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg">
-                <p className="font-medium">{errorMessage}</p>
+              <div className="bg-red-50 border border-red-200 text-red-800 px-3 sm:px-4 py-2 sm:py-3 rounded-lg">
+                <p className="font-medium text-sm sm:text-base">{errorMessage}</p>
               </div>
             )}
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-brand text-main font-semibold py-3 px-6 rounded-lg hover:bg-brand-muted focus:outline-none focus:ring-brand focus:ring-offset-2 transition disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              className="w-full bg-brand text-main font-semibold py-2.5 sm:py-3 px-6 rounded-lg hover:bg-brand-muted focus:outline-none focus:ring-brand focus:ring-offset-2 transition disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer text-sm sm:text-base"
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>

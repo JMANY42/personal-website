@@ -64,21 +64,3 @@
 html {
   scroll-behavior: smooth;
 }
-
-/* Custom scrollbar (optional) */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-bg, #1a1a1a);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-accent, #3b82f6);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-main, #60a5fa);
-}
