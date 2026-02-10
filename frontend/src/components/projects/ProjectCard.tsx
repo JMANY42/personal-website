@@ -7,7 +7,7 @@ function ProjectCard ({ title, description, tech, github, demo, status, path }: 
 
     //Navigate to URL when clicked
     return (
-        <div className="rounded-2xl border border-neutral-800 bg-surface p-5 transition hover:-translate-y-1 hover:shadow-xl"
+        <div className="rounded-2xl border border-neutral-800 bg-surface p-5 transition hover:-translate-y-1 hover:shadow-xl animate-fadeIn"
             onClick={() => {navigate('/projects/'+path)}}
 
         >

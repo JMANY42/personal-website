@@ -2,19 +2,18 @@ import NavbarOption from "./NavbarOption.tsx"
 
 function Navbar() {
 
-    //TODO (maybe): dynamically get Navbar options from backend 
-    //reason: might want to add sections or serve different options to different users
     const options = [
         {text: 'Home', path: '/'}, 
         {text: 'About Me', path: '/about-me'}, 
-        {text: 'Projects', path: '/projects'}
+        {text: 'Projects', path: '/projects'},
+        {text: 'Contact Me', path: '/contact'}
     ];
     return (
-        <div className="flex gap-5 px-8 py-4 navbar">
-            {options.map((option, id) => (    // Map over options to create list items
+        <div className="flex gap-3 sm:gap-4 md:gap-5 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 navbar">
+            {options.map((option, id) => (
                 <li 
                     key={id}
-                    className="cursor-pointer text-main text-2xl"> {/* List items styling */}
+                    className="cursor-pointer text-main text-base sm:text-lg md:text-xl lg:text-2xl">
                     <NavbarOption text={option.text} path={option.path}></NavbarOption>
                 </li>
             ))}
