@@ -27,8 +27,17 @@ function ProjectOverview ({ title, tech, github, demo, status, content }: Projec
                     <div className="w-px self-stretch bg-white"/>
 
                     <div className="flex flex-col gap-1 text-lg">
-                        {github && <a href={github} className="text-blue-400 hover:underline">GitHub</a>}
-                        {demo && <a href={demo} className="text-accent hover:underline">Demo</a>}
+                        {github && <a
+                            href={github} 
+                            className="text-blue-400 hover:underline" 
+                            target="_blank"
+                        >GitHub</a>}
+                        
+                        {demo && <a
+                            href={demo}
+                            className="text-accent hover:underline"
+                            target="_blank"
+                        >Demo</a>}
                     </div>
                 </div> 
                 <hr className="prose max-w-none my-8"/>
