@@ -1,14 +1,23 @@
 import type { Project } from '../../types/project.ts'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import StatusTag from '../StatusTag.tsx'
 
 function ProjectCard ({ title, description, tech, github, demo, status, path }: Project ) {
     const navigate = useNavigate();
+    const location = useLocation();
+    const handleClick = () => {
+        const fullPath = '/projects/'+path;
+
+        // ONLY navigate if not already on that page
+        if (location.pathname != fullPath) {
+            navigate(fullPath);
+        }
+    }
 
     //Navigate to URL when clicked
     return (
         <div className="rounded-2xl border border-neutral-800 bg-surface p-5 transition hover:-translate-y-1 hover:shadow-xl animate-fadeIn"
-            onClick={() => {navigate('/projects/'+path)}}
+            onClick={handleClick}
 
         >
             <div className="flex justify-between items-center">

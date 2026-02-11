@@ -17,7 +17,7 @@ function Projects() {
     const pathEnding = location.pathname.substring(location.pathname.lastIndexOf('/')+1);
     useEffect(() => {
         if(projects[0] && pathEnding === 'projects') {
-            navigate(projects[0].path);
+            navigate(projects[0].path, { replace: true });
         }
     })
 
