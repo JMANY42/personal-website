@@ -36,8 +36,17 @@ function ProjectCard ({ title, description, tech, github, demo, status, path }: 
 
             <div className="mt-4 flex justify-between gap-4 text-sm items-center">
                 <div className="space-x-4">
-                    {github && <a href={github} className="text-blue-400 hover:underline">GitHub</a>}
-                    {demo && <a href={demo} className="text-green-400 hover:underline">Demo</a>}
+                    {github && <a
+                        href={github} 
+                        className="text-blue-400 hover:underline" 
+                        target="_blank"
+                    >GitHub</a>}
+                    
+                    {demo && <a
+                        href={demo}
+                        className="text-accent hover:underline"
+                        target="_blank"
+                    >Demo</a>}
                 </div>
                 <p className="cursor-pointer text-white bg-accent p-2 rounded-full hover:bg-accent border border-neutral-800">Expand</p>
             </div>
