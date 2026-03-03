@@ -59,10 +59,10 @@ const Contact: React.FC = () => {
 };
 
   return (
-    <div className="bg-bg w-full lg:h-screen flex flex-col">
+    <div className="bg-bg w-full h-screen flex flex-col overflow-hidden">
     <Navbar/>
 
-    <div className="bg-bg flex-1 px-4 sm:px-6 lg:px-8 lg:overflow-y-auto flex items-center">
+    <div className="bg-bg flex-1 px-4 sm:px-6 lg:px-8 overflow-y-auto flex items-center">
       <div className="max-w-3xl mx-auto w-full py-4 sm:py-6">
         <div className="text-center mb-2 sm:mb-4 space-y-1 sm:space-y-2 animate-fadeInFirst">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-thin text-accent">
