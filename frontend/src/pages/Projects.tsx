@@ -67,7 +67,7 @@ function Projects() {
     const selectedProjectIndex = projects.findIndex(project => project.path === pathEnding);
 
     return (
-        <div className="bg-bg w-full h-screen flex flex-col">
+        <div className="bg-bg w-full lg:h-screen flex flex-col">
             <Navbar />
 
             {/* mobile vs desktop layouts */}
@@ -106,8 +106,8 @@ function Projects() {
                 )
             ) : (
                 // desktop: original two-column layout
-                <div className="flex flex-col lg:flex-row flex-1 overflow-hidden">
-                    <div className="p-4 sm:p-6 lg:p-8 text-main w-full lg:w-1/2 overflow-y-auto">
+                <div className="flex flex-col lg:flex-row flex-1 lg:overflow-hidden">
+                    <div className="p-4 sm:p-6 lg:p-8 text-main w-full lg:w-1/2 lg:overflow-y-auto">
                         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-left text-main font-thin pb-6 sm:pb-8 text-accent animate-slideInLeftFirst">
                             Projects
                         </h1>
@@ -126,7 +126,7 @@ function Projects() {
                         </div>
                     </div>
                     <div className="hidden lg:block w-0.5 self-stretch bg-gray-700 animate-fadeIn" />
-                    <div className="w-full lg:w-1/2 pl-0 lg:pl-2 overflow-y-auto animate-slideInRight">
+                    <div className="w-full lg:w-1/2 pl-0 lg:pl-2 lg:overflow-y-auto animate-slideInRight">
                         {!loading && (
                             <ProjectOverview {...projects[selectedProjectIndex]} />
                         )}
