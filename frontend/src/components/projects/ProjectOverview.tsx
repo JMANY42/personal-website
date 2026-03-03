@@ -6,18 +6,22 @@ function ProjectOverview ({ title, tech, github, demo, status, content }: Projec
 
     return (
         <div className="p-5 h-full overflow-y-scroll">
-            <div className="flex gap-5 items-center">
+            {/* title with tags; on mobile stack vertically */}
+            <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center">
                 <h2 className="text-5xl font-bold text-main">{title}</h2>
-                <div className="flex gap-3 items-center">
-                    <StatusTag status={status}/>
-                    <div className="w-px self-stretch bg-white"/>
-                    {tech && <div className="flex flex-wrap gap-3 items-center">
-                        {tech.map(t => (
-                        <span key={t} className="rounded-full bg-brand px-3 py-1 text-sm text-main">
-                            {t}
-                        </span>
-                        ))}
-                    </div>}
+                <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+                    <StatusTag status={status} />
+                    {/* divider only when side-by-side */}
+                    <div className="hidden sm:block w-px self-stretch bg-white" />
+                    {tech && (
+                        <div className="flex flex-wrap gap-3 items-center">
+                            {tech.map(t => (
+                                <span key={t} className="rounded-full bg-brand px-3 py-1 text-sm text-main">
+                                    {t}
+                                </span>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
             <hr className="prose max-w-none my-8"/>
