@@ -10,11 +10,11 @@ import ResumeLink from '../components/ResumeLink.tsx'
 
 function AboutMe() {
     return (
-    <div className="bg-bg w-full h-screen flex flex-col">
+    <div className="bg-bg w-full lg:h-screen flex flex-col">
         <Navbar/>
 
-        <div className="flex flex-col lg:flex-row flex-1 overflow-hidden page-padding">
-            <div className="p-4 sm:p-6 lg:p-8 text-main w-full lg:w-1/2 overflow-y-auto">
+        <div className="flex flex-col lg:flex-row flex-1 lg:overflow-hidden page-padding">
+            <div className="p-4 sm:p-6 lg:p-8 text-main w-full lg:w-1/2 lg:overflow-y-auto">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-left font-thin text-accent animate-fadeInFirst">About Me</h1>
                 <div className="animate-slideInLeft">
                     <h2 className="text-2xl sm:text-3xl font-bold pt-6 sm:pt-10">Who am I?</h2>
@@ -27,7 +27,8 @@ function AboutMe() {
                         <p className="text-lg sm:text-xl text-muted pb-6 lg:pb-0">There's no good generalized answer to that question. However, if my <ResumeLink svg={false}/> doesn't convince you, please look through my projects to get a better understanding of my capabilities.</p>
                 </div>
             </div>
-            <div className="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 overflow-y-auto animate-slideInRight">
+            <h2 className="lg:hidden text-3xl sm:text-4xl font-bold pt-6 sm:pt-10 px-4 text-main text-center">Some Pictures</h2>
+            <div className="w-full lg:w-1/2 grid grid-cols-1 lg:grid-cols-2 gap-1 lg:gap-4 px-1 py-0.5 lg:p-4 lg:overflow-y-auto animate-slideInRight">
                 <PictureCard caption="My ACM Projects team after winning first place" img_path={ACM}/>
                 <PictureCard caption="My cheerful brother" img_path={Brother}/>
                 <PictureCard caption="UTD Galaxsea at the 2025 RoboBoat competition" img_path={Galaxsea}/>
