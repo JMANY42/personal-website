@@ -7,6 +7,15 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
+html,
+body {
+  background-color: var(--bg);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 li{
   list-style-type: none; /* Removes the bullet points */
 }

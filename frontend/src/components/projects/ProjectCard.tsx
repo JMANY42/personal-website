@@ -28,7 +28,7 @@ function ProjectCard ({ title, description, tech, github, demo, status, path }: 
 
             <div className="mt-4 flex flex-wrap gap-2">
                 {tech.map(t => (
-                <span key={t} className="rounded-full bg-brand px-3 py-1 text-xs">
+                <span key={t} className="rounded-full bg-brand px-3 py-1 text-xs text-main">
                     {t}
                 </span>
                 ))}
