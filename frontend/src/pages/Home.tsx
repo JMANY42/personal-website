@@ -132,10 +132,11 @@ function Home() {
                 </div>
               </div>
               
-              <div className="bg-linear-to-br from-bg to-transparent rounded-lg p-5 shadow-lg">
+              <div className="bg-linear-to-br from-bg to-transparent rounded-lg px-2 sm:px-5 py-5 shadow-lg">
                 <Carousel
                   autoplay
-                  className="w-full aspect-video rounded-4xl"
+                  // allow taller carousel on small screens, revert to 16:9 aspect on larger
+                  className="w-full h-[60vh] sm:aspect-video sm:h-auto rounded-4xl"
                   renderArrows={(api) => <CarouselArrows api={api} />}
                   renderIndicators={(api) => <CarouselIndicators api={api} />}
                 >

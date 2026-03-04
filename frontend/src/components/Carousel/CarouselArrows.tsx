@@ -10,7 +10,7 @@ export const CarouselArrows: React.FC<{ api: CarouselAPI }> = ({ api }) => {
         aria-label="Previous slide"
         onClick={api.prev}
         className="
-          absolute left-3 top-1/2 -translate-y-1/2
+          absolute left-6 sm:left-3 bottom-3 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2
           z-10
           rounded-full
           bg-black/50 text-white
@@ -27,7 +27,7 @@ export const CarouselArrows: React.FC<{ api: CarouselAPI }> = ({ api }) => {
         aria-label="Next slide"
         onClick={api.next}
         className="
-          absolute right-3 top-1/2 -translate-y-1/2
+          absolute right-6 sm:right-3 bottom-3 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2
           z-10
           rounded-full
           bg-black/50 text-white
