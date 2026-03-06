@@ -30,11 +30,19 @@ function broadcast(data) {
   });
 }
 
-//debug
+// send websocket ping every 30 seconds to keep connection alive
 wss.on('connection', (ws) => {
   console.log('Client connected, total:', wss.clients.size);
+
+  const pingInterval = setInterval(() => {
+    if (ws.readyState === ws.OPEN) {
+      ws.ping();
+    }
+  }, 30000);
+
   ws.on('close', (code, reason) => {
     console.log('Client disconnected, code:', code, 'reason:', reason.toString(), 'total:', wss.clients.size);
+    clearInterval(pingInterval);
   });
 });
 
