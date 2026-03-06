@@ -1,4 +1,4 @@
-import { HappyBirthdayMom, Home, AboutMe, Projects, Contact} from "./pages";
+import { HappyBirthdayMom, Home, AboutMe, Projects, Contact, Canvas} from "./pages";
 
 export const routes = [
   {path: "/", element: <Home /> },
@@ -7,4 +7,5 @@ export const routes = [
   {path: "/projects", element: <Projects /> },
   { path: "/projects/:projectPath", element: <Projects />},
   { path: "/contact", element: <Contact />},
+  { path: "/canvas", element: <Canvas />},
 ];

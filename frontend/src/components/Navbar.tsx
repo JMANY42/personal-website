@@ -6,6 +6,7 @@ function Navbar() {
         {text: 'Home', path: '/'}, 
         {text: 'About Me', path: '/about-me'}, 
         {text: 'Projects', path: '/projects'},
+        {text: 'Canvas', path: '/canvas'},
         {text: 'Contact Me', path: '/contact'}
     ];
     return (
