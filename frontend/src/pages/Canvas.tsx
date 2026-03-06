@@ -2,7 +2,6 @@ import Navbar from '../components/Navbar.tsx'
 import { useRef, useEffect, useState } from 'react'
 import { getCanvas, postPixel, connectCanvas } from '../api/canvas.ts'
 import type { CanvasData } from '../types/CanvasData.tsx';
-import type { PixelData } from '../types/PixelData.tsx';
 import { GithubPicker } from 'react-color';
 
 function Canvas() {
@@ -10,7 +9,6 @@ function Canvas() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string>('#000000');
-  const [clickedPixel, setClickedPixel] = useState<{ x: number; y: number } | null>(null);
   const [postError, setPostError] = useState<{ message: string; isCooldown: boolean } | null>(null);
   const postErrorTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -83,8 +81,6 @@ function Canvas() {
     const x = Math.floor((e.clientX - rect.left) * scaleX);
     const y = Math.floor((e.clientY - rect.top) * scaleY);
 
-    setClickedPixel({ x, y });
-
     postPixel(
       {x: x, y: y, color: selectedColor})
       .then(() => {})
@@ -94,7 +90,7 @@ function Canvas() {
       });
   };
 
-  const handleColorChange = (color: { hex: string }, event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleColorChange = (color: { hex: string }) => {
     setSelectedColor(color.hex);
   };
 
