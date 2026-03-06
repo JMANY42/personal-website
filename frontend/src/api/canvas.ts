@@ -41,6 +41,7 @@ const WS_URL = getWebSocketURL()
 
 export function connectCanvas(onPixel: (x: number, y: number, color: string) => void): () => void {
   const ws = new WebSocket(WS_URL);
+  console.log("Connecting to WebSocket at: ", WS_URL);
 
   ws.onmessage = (event) => {
     const data = JSON.parse(event.data);

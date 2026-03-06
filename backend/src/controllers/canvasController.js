@@ -7,12 +7,14 @@ const COOLDOWN_MS = 5000; // 5 seconds
 
 // GET /canvas — return full canvas state
 export async function getCanvas(req, res) {
+  console.log("GET /canvas called");
   const pixels = db.prepare('SELECT x, y, color FROM pixels').all();
   res.json({ width: CANVAS_WIDTH, height: CANVAS_HEIGHT, pixels });
 };
 
 // POST /canvas/pixel — place a pixel
 export function postPixel(req, res, broadcast) {
+  console.log("POST /canvas/pixel called with body: ", req.body);
   const { x, y, color } = req.body;
   const userId = req.ip; // or use a session/cookie ID
 
@@ -52,5 +54,6 @@ export function postPixel(req, res, broadcast) {
 
   // TODO: broadcast via WebSocket here (pass pixel to your ws server)
   broadcast({ x, y, color }); // add this after the DB upsert
+  console.log("Broadcasted pixel: ", { x, y, color });
   res.json({ ok: true, x, y, color });
 };

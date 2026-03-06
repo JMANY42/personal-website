@@ -54,6 +54,7 @@ function Canvas() {
 
     // Connect WebSocket after canvas is ready
     const disconnect = connectCanvas((x, y, color) => {
+      console.log("Received pixel update via WebSocket: ", { x, y, color });
       ctx.fillStyle = color;
       ctx.fillRect(x, y, 1, 1); // paint a single pixel directly
     });

@@ -30,6 +30,10 @@ function broadcast(data) {
   });
 }
 
+//debug
+wss.on('connection', (ws) => {
+  console.log('WebSocket client connected');
+});
 
 const PORT = process.env.PORT || 5000;
 
