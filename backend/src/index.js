@@ -32,7 +32,10 @@ function broadcast(data) {
 
 //debug
 wss.on('connection', (ws) => {
-  console.log('WebSocket client connected');
+  console.log('Client connected, total:', wss.clients.size);
+  ws.on('close', (code, reason) => {
+    console.log('Client disconnected, code:', code, 'reason:', reason.toString(), 'total:', wss.clients.size);
+  });
 });
 
 const PORT = process.env.PORT || 5000;

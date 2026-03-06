@@ -48,8 +48,13 @@ export function connectCanvas(onPixel: (x: number, y: number, color: string) => 
     onPixel(data.x, data.y, data.color);
   };
 
-  ws.onerror = (err) => console.error('WebSocket error:', err);
+  ws.onclose = (event) => {
+    console.log('WebSocket closed, code:', event.code, 'reason:', event.reason, 'clean:', event.wasClean);
+  };
 
+  ws.onerror = (error) => {
+    console.error('WebSocket error:', error);
+  };
   // Return a cleanup function to close the socket
   return () => ws.close();
 }
