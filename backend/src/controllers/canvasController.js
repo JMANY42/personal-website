@@ -1,8 +1,8 @@
 // routes/canvas.js
 import db from '../data/canvasdb.js';
 
-const CANVAS_WIDTH = 100;
-const CANVAS_HEIGHT = 100;
+const CANVAS_WIDTH = 50;
+const CANVAS_HEIGHT = 50;
 const COOLDOWN_MS = 5000; // 5 seconds
 
 // GET /canvas — return full canvas state
@@ -25,6 +25,7 @@ export function postPixel(req, res, broadcast) {
     y < 0 || y >= CANVAS_HEIGHT ||
     !/^#[0-9A-Fa-f]{6}$/.test(color)
   ) {
+    console.log("ERROR: Invalid pixel data");
     return res.status(400).json({ error: 'Invalid pixel data' });
   }
 
@@ -32,6 +33,7 @@ export function postPixel(req, res, broadcast) {
   const now = Date.now();
   const cooldown = db.prepare('SELECT last_place FROM cooldowns WHERE user_id = ?').get(userId);
   if (cooldown && now - cooldown.last_place < COOLDOWN_MS) {
+    console.log("ERROR: Cooldown active for ", userId);
     const remaining = Math.ceil((COOLDOWN_MS - (now - cooldown.last_place)) / 1000);
     return res.status(429).json({ error: `Cooldown: ${remaining}s remaining` });
   }

@@ -104,7 +104,7 @@ function Canvas() {
       <div className="flex flex-1 items-center p-4">
         {/* Left gap with color picker centered */}
         <div className="flex flex-1 justify-center items-center">
-          <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-10 items-center">
             <GithubPicker
               onChangeComplete={handleColorChange}
               triangle="hide"
@@ -112,9 +112,9 @@ function Canvas() {
               colors={colors}
               width="240px"
             />
-            <p className="pt-10 text-main">PS. Can you figure out how to paint using a color of your choosing? (And learn why back end verification is so important)</p> 
+            <p className="pt-10 text-main px-10 text-center">PS. Can you figure out how to paint using a color of your choosing?<br/>(And learn why server side input validations is so important)</p> 
           </div>
-	</div>
+	      </div>
         {/* Canvas */}
         <div className="flex flex-col items-center justify-center max-w-2xl w-full gap-2">
           {loading && <div className="text-white">Loading canvas...</div>}
