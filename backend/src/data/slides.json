@@ -34,5 +34,11 @@
       "title": "Personal Server",
       "content": "I have recently opened up my server to the internet via a cloudflared tunnel. My server is serving this webpage right now!",
       "path": "/projects/server"
+    },
+    {
+      "id": "6",
+      "title": "Drawing Canvas",
+      "content": "There's now a blank canvas available for you to draw on. The sky's the limit!",
+      "path": "/canvas"   
     }
 ]
