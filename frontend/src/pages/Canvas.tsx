@@ -120,7 +120,7 @@ function Canvas() {
           <canvas
             ref={canvasRef}
             onClick={handleCanvasClick}
-            className="border-4 border-gray-300 bg-white shadow-lg w-full aspect-square max-w-2xl cursor-crosshair"
+            className="border-4 border-gray-300 bg-white shadow-lg w-full aspect-square max-w-2xl"
             style={{ imageRendering: 'pixelated', display: loading || error ? 'none' : 'block' }}
           />
 
