@@ -15,8 +15,12 @@ export async function getCanvas(req, res) {
 // POST /canvas/pixel — place a pixel
 export function postPixel(req, res, broadcast) {
   console.log("POST /canvas/pixel called with body: ", req.body);
-  const { x, y, color } = req.headers['x-real-ip'];
-  const userId = req.ip; // or use a session/cookie ID
+  const { x, y, color } = req.body;
+
+  //set userId to the users IP address
+  const userId = (process.env.NODE_ENV) ? // only undefined in local testing
+    req.headers['x-real-ip'] : 
+    req.ip; 
 
   // Validate inputs
   if (
