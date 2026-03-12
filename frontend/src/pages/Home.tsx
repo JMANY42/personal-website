@@ -65,7 +65,7 @@ function Home() {
             <section className="animate-slideInLeft">
               <div className="space-y-4 text-base sm:text-lg md:text-xl text-muted leading-relaxed">
                 <p>
-                  To clarify, my first name is David, but I go by my middle name of Jonathan
+                  In case you are confused, my first name is David, but I go by my middle name of Jonathan
                 </p>
                 
                 <p>
@@ -74,8 +74,11 @@ function Home() {
                 </p>
                 
                 <p>
-                  I plan on hosting my portfolio here, some information about me, 
-                  and updates to my current projects, and my resume
+                  I plan on hosting information relevent to getting hired such as my portfolio, some information about me, 
+                  updates to my current projects, and my resume
+                </p>
+                <p>
+                  I also plan on hosting applicable projects here as a centralized place to see everything I've worked on
                 </p>
               </div>
 
