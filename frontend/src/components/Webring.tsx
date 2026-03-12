@@ -8,9 +8,8 @@ function Webring() {
             <a href={`https://cs.utdring.com/#${site}`} target=''>
                 <WebringIcon size={48}/>
             </a>
-            <a href={`https://cs.utdring.com/#${site}.com?nav=next`}>→</a>
+            <a href={`https://cs.utdring.com/#${site}?nav=next`}>→</a>
         </div>
-// Replace 'your-site-here' with your actual site URL
     )
 }
 
