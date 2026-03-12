@@ -5,7 +5,7 @@ function Webring() {
     return (
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <a href={`https://cs.utdring.com/#${site}?nav=prev`}>←</a>
-            <a href={`https://cs.utdring.com/#${site}.com`} target=''>
+            <a href={`https://cs.utdring.com/#${site}`} target=''>
                 <WebringIcon size={48}/>
             </a>
             <a href={`https://cs.utdring.com/#${site}.com?nav=next`}>→</a>
