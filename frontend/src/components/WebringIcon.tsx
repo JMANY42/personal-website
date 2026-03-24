@@ -1,14 +1,5 @@
-export default function WebringIcon({
-  size = 48,
-}: {
-  color?: string;
-  size?: number;
-}) {
-  return (
-    <img
-            src='https://cs.utdring.com/icon.white.svg'
-            alt='CS Webring'
-            style={{ width: size, height: 'auto', opacity: 0.8 }}
-        />
-  );
+import logoSrc from '../assets/logoFinal02_Normal.svg';
+
+export default function WebringIcon({ size = 48 }: { size?: number }) {
+  return <img src={logoSrc} alt="UTD CS Webring" width={size} height={size} />;
 }
