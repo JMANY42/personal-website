@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 .env
+
+# keep database seperate between environemnts
+canvas.db*
