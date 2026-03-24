@@ -20,11 +20,11 @@ function AboutMe() {
                     <h2 className="text-2xl sm:text-3xl font-bold pt-6 sm:pt-10">Who am I?</h2>
                         <p className="text-lg sm:text-xl text-muted">My name is Jonathan Lewis. I am a second year CS student at UTD and a part of the National Merit Scholarship Program, UTD Computing Scholars (CS^2), and UTD CV Honors.</p>
                     <h2 className="text-2xl sm:text-3xl font-bold pt-6 sm:pt-10">What am I passionate about?</h2>
-                        <p className="text-lg sm:text-xl text-muted">I have many interests including autonomous robotics, computer networking, and, in general, how technology interacts with the physical world. My favorite part about making this website was setting up and routing the server that it is hosted on.</p>
+                        <p className="text-lg sm:text-xl text-muted">I have many interests including autonomous robotics, computer networking, and, in general, how technology interacts with the physical world. My favorite part about making this website was setting up and routing the server that it is hosted on, not working on the frontend design (yuck).</p>
                     <h2 className="text-2xl sm:text-3xl font-bold pt-6 sm:pt-10">Am I just a nerd?</h2>
-                        <p className="text-lg sm:text-xl text-muted">No! I have several differet hobbies outside of tech. I am a cellist in the UTD orchestra and love listening to and playing music. I also love spending time with my wonderful friends.</p>
+                        <p className="text-lg sm:text-xl text-muted">No! I have several differet hobbies outside of tech. I am a cellist in the UTD orchestra and love listening to and playing music. I also love playing and watching football. Go Cowboys!</p>
                     <h2 className="text-2xl sm:text-3xl font-bold pt-6 sm:pt-10">Why should you hire me?</h2>
-                        <p className="text-lg sm:text-xl text-muted pb-6 lg:pb-0">There's no good generalized answer to that question. However, if my <ResumeLink svg={false}/> doesn't convince you, please look through my projects to get a better understanding of my capabilities.</p>
+                        <p className="text-lg sm:text-xl text-muted pb-6 lg:pb-0">I have technical ability and am confident I can work well with anyone. However, if my <ResumeLink svg={false}/> doesn't convince you, please look through my projects to get a better understanding of my capabilities.</p>
                 </div>
             </div>
             <h2 className="lg:hidden text-3xl sm:text-4xl font-bold pt-6 sm:pt-10 px-4 text-main text-center">Some Pictures</h2>

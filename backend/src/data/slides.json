@@ -1,36 +1,36 @@
 [
     {
       "id": "5",
+      "title": "Drawing Canvas",
+      "content": "There's now a blank canvas available for you to draw on. The sky's the limit!",
+      "path": "/canvas"   
+    },
+    {
+      "id": "4",
+      "title": "UTD CS Webring",
+      "content": "I'm now a part of the UTD CS webring. Checkout the footer for more!",
+      "path": "/#footer"
+    },
+    {
+      "id": "3",
       "title": "Contact Me",
       "content": "You can now send me a message straight from the website!",
       "path": "/contact"
     },
     {
-      "id": "4",
+      "id": "2",
       "title": "Resume",
       "content": "My Resume is now downloadable from the website",
       "path": "/"
     },
     {
-      "id": "3",
+      "id": "1",
       "title": "Site Animations",
       "content": "The website now has animations to smooth abrupt page transitions.",
       "path": "/"
     },
     {
       "id": "0",
-      "title": "Home Page UI",
-      "content": "I changed the layout of the home page to include a carousel and changed the overall UI.",
-      "path": "/projects/personal-website"
-    },
-    {
-      "id": "1",
-      "title": "Personal Website",
-      "content": "I have recently launched v1.0 of my website. You're already looking at it!",
-      "path": "/projects/personal-website"
-    },
-    {
-      "id": "2",
       "title": "Personal Server",
       "content": "I have recently opened up my server to the internet via a cloudflared tunnel. My server is serving this webpage right now!",
       "path": "/projects/server"
