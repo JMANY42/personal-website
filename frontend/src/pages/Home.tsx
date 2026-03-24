@@ -1,4 +1,4 @@
-import Navbar from '../components/Navbar.tsx'
+import Layout from '../components/Layout.tsx'
 import Carousel from '../components/Carousel/Carousel.tsx'
 import CarouselArrows from '../components/Carousel/CarouselArrows.tsx'
 import CarouselIndicators from '../components/Carousel/CarouselIndicators.tsx'
@@ -42,13 +42,8 @@ function Home() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="min-h-screen w-full bg-bg flex flex-col">
-      <div className="sticky top-0 z-10 bg-bg">
-        <Navbar />
-      </div>
-      
-      <main className="flex-1 w-full page-padding py-6 sm:py-8 md:py-12 overflow-y-auto">
-        <div className="w-full h-full">
+    <Layout>
+        <div className="w-full h-full overflow-y-auto">
           {/* HERO SECTION */}
           <section className="mb-8 md:mb-12 animate-fadeInFirst max-w-5xl mx-auto px-4">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-thin text-accent mb-4 tracking-tight">
@@ -166,10 +161,7 @@ function Home() {
             </p>
           </div>
         </div>
-
-      </main>
-    </div>
-
+    </Layout>
   );
 }
 
