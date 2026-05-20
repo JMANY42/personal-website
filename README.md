@@ -115,3 +115,4 @@ The website is self-hosted on a server running in my apartment and securely expo
 - [ ] Improve UI polish and mobile responsiveness  
 
 ---
+
